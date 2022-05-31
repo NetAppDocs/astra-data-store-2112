@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: concepts/storage-efficiency.html
+keywords: how astra works, how Astra works, what Astra is, astra data store,
+summary: Astra Data Store uses storage efficiency technologies such as thin provisioning, zero-block elimination, compression, and deduplication.
+---
+
+= Storage efficiency in Astra Data Store preview
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+Astra Data Store preview uses storage efficiency technologies based on NetApp ONTAP and SolidFire technologies including:
+
+* *Thin provisioning*: A thin-provisioned volume is one for which storage is not reserved in advance. Instead, storage is allocated dynamically, as it is needed. Free space is released back to the storage system when data in the volume or LUN is deleted.
+* *Zero-block detection and elimination*: ONTAP storage systems with thin provisioning provide the ability to detect areas of a volume that have been zeroed out so they can reclaim that space and use it elsewhere.
+* *Compression*: Compression reduces the amount of physical storage required for a volume by combining data blocks in compression groups, each of which is stored as a single block. Reads of compressed data are faster than in traditional compression methods because ONTAP decompresses only the compression groups that contain the requested data, not an entire file.
+* *Deduplication*: Deduplication reduces the amount of storage required for a volume (or all the volumes in an AFF aggregate) by discarding duplicate blocks and replacing them with references to a single shared block. Reads of deduplicated data typically incur no performance charge. Writes incur a negligible charge except on overloaded nodes.
+
+All of these features are enabled by default.
+
+See https://docs.netapp.com/ontap-9/index.jsp[storage efficiency details^].
+
+
+== For more information
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^]
+* https://docs.netapp.com/us-en/astra/index.html[Astra Control Service documentation^]
+* https://docs.netapp.com/us-en/astra-control-center/[Astra Control Center documentation^]
+* https://docs.netapp.com/us-en/trident/index.html[Astra Trident documentation^]
+* https://docs.netapp.com/us-en/astra-automation/index.html[Use the Astra Control API^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP documentation^]

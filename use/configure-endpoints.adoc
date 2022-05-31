@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: use/configure-endpoints.html
+keywords: astra, astra data store, kubectl, endpoints, confluent
+summary: You can use kubectl commands with Astra Data Store to configure endpoints for use with Confluent, for example.
+---
+
+= Configure and monitor event logs
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+To monitor Event Management System (EMS) logs, you can do the following high level tasks:
+
+* <<Configure monitoring in the Astra Data Store preview cluster custom resource (CR)>>
+* <<Set up Cloud Insights>>
+* <<Stream event logs to Elastic>>.
+
+== Configure monitoring in the Astra Data Store preview cluster custom resource (CR)
+
+If the monitoring option has not been configured on the Astra Data Store preview cluster CR, you can set it up using `astrads` extensions.
+
+
+
+Enter:
+
+----
+~% kubectl astrads monitoring setup -n <NAMESPACE OF AGENT INSTALLED>
+   -r <DOCKER REPO TO FIND FLUENT/TELEGRAF ETC IMAGES>
+----
+
+where:
+
+* Namespace of agent installed: Enter the namespace for the Monitoring agent, which is the default name of the monitoring-netapp CR for the Monitoring Operator.
+* `-r` is optional to set up the Docker registry where the Fluent or Telegraf images are located. By default, the path is set to `docker.repo.eng.netapp.com/global/astra`, which you can change.
+
+== Set up Cloud Insights
+
+To view the logs, setting up Cloud Insights is optional; however, it is helpful to view data using Cloud Insights.
+See link:../use/monitor-with-cloud-insights.html[how to set up NetApp Cloud Insights] for use with Astra Data Store preview.
+
+
+
+== Stream event logs to Elastic
+To stream EMS events and other pod logs to a third-party endpoint such as Elastic, use the `astrads` extensions.
+
+Enter:
+----
+~% kubectl astrads monitoring --host <ELASTIC HOST NAME> --port <ELASTIC HOST PORT> es
+----
+
+NOTE: The Elastic host name can be an IP address.

@@ -1,0 +1,23 @@
+---
+sidebar: sidebar
+permalink: concepts/expansion.html
+keywords: how astra works, how Astra expansion works, what Astra is, astra data store, kubernetes
+summary: You can expand Astra Data Store clusters.
+---
+
+= Cluster expansion
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+Astra Data Store preview supports nodes of different types and capabilities in a cluster. If you are expanding a cluster, Astra Data Store preview supports adding nodes with any performance capabilities, as long as they are not lower than the least performant node in the cluster. New nodes must have the same storage capacity as existing nodes. All nodes, including new nodes during an expansion, need to at least meet the minimum requirements in link:../get-started/requirements.html[Astra Data Store preview requirements].
+
+== For more information
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^]
+* https://docs.netapp.com/us-en/astra/index.html[Astra Control Service documentation^]
+* https://docs.netapp.com/us-en/astra-control-center/[Astra Control Center documentation^]
+* https://docs.netapp.com/us-en/trident/index.html[Astra Trident documentation^]
+* https://docs.netapp.com/us-en/astra-automation/index.html[Use the Astra API^]
+* https://docs.netapp.com/us-en/cloudinsights/[Cloud Insights documentation^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP documentation^]

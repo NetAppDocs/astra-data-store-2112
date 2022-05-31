@@ -1,0 +1,78 @@
+---
+sidebar: sidebar
+permalink: get-started/quick-start.html
+keywords: get started, quick start, astra, astra data store, deploy, deployment, kubernetes
+summary: Get started with Astra Data Store in a few steps.
+---
+
+= Quick start for Astra Data Store preview
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+This page provides a high-level overview of the steps needed to get started with Astra Data Store preview. The links within each step take you to a page that provides more details.
+
+Try it out! If you want to try Astra Data Store preview, you can use a 90-day preview license.
+
+https://www.netapp.com/cloud-services/astra/data-store-form/[Sign up here^] to obtain the Astra Data Store preview license.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Review Kubernetes cluster requirements
+
+[role="quick-margin-list"]
+
+
+* Clusters must be running in a healthy state, with at least four or more worker nodes.
+
+* Each of the Kubernetes worker nodes that are part of the Astra Data Store preview deployment should have SSDs of the same interface type (SATA, SAS or NVMe) and the same number of drives that are assigned to the Astra Data Store preview cluster.
+* Each SSD should have a unique serial number.
+
+
+[role="quick-margin-para"]
+Learn more about link:../get-started/requirements.html[Astra Data Store preview requirements].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Download and install Astra Data Store preview
+
+[role="quick-margin-list"]
+* Download Astra Data Store preview from the https://mysupport.netapp.com/site/products/all/details/astra-data-store/downloads-tab[NetApp Support Site^].
+* Install Astra Data Store preview in your local environment.
+* Apply the Astra Data Store preview license.
+* Install the Astra Data Store preview cluster.
+* Configure Astra Data Store preview monitoring.
+* If you use Red Hat OpenShift, install Astra Data Store preview on Red Hat OpenShift Container Platform (OCP).
+
+
+
+[role="quick-margin-para"]
+Learn more about link:../get-started/install-ads.html[installing Astra Data Store preview].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Complete some initial setup tasks
+
+
+[role="quick-margin-list"]
+
+* Install Astra Trident.
+* Install Kubernetes snapshot custom resource definitions (CRDs) and controller.
+* Set up Astra Data Store preview as a storage backend.
+* Create a default Astra Data Store preview storage class.
+
+
+
+[role="quick-margin-para"]
+Learn more about the link:../get-started/setup-ads.html[initial setup process].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Use Astra Data Store preview
+
+[role="quick-margin-para"]
+After you finish setting up Astra Data Store preview, here's what you might do next:
+
+[role="quick-margin-list"]
+* Use kubectl commands and kubectl astrads extension to manage the cluster, including tasks such as place a node in maintenance mode, replace a drive, or replace a node. Learn more about link:../use/kubectl-commands-ads.html[how to use kubectl commands with Astra Data Store preview].
+
+* Configure monitoring endpoints. Learn more about link:../use/configure-endpoints.html[configuring monitoring endpoints].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Continue from this Quick Start
+
+
+[role="quick-margin-para"]
+link:../get-started/install-ads.html[Install Astra Data Store preview].

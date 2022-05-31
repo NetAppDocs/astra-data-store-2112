@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: release-notes/whats-new.html
+keywords: what's new, bugs, bug fixes, new features, enhancements
+summary: NetApp periodically updates Astra Data Store to bring you new features, enhancements, and bug fixes.
+---
+
+= What's new in this release of Astra Data Store
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/release-notes/
+
+We're pleased to announce the 2021.12.1 patch of the preview release of Astra Data Store.
+
+== 08 February 2022 (2021.12.1)
+
+Patch release (2021.12.1) for the Astra Data Store preview (21.12).
+
+* With this release, Astra Data Store preview supports VXLAN configurations with Calico CNI.
+* Calico WireGuard enabled network configurations are now supported by Astra Data Store preview.
+* Updated AstraDSCluster.yaml `adsNetworkInterfaces` section includes improved, descriptive comments.
+* New Astra Data Store uninstall script now provided as an easier alternative to the kubectl command uninstall process.
+
+== 21 December 2021 (21.12)
+
+Initial release of Astra Data Store preview.
+
+* link:../concepts/intro.html[What it is]
+* link:../concepts/architecture.html[Deployment models and components]
+* link:../get-started/requirements.html[What it takes to get started]
+* link:../get-started/install-ads.html[Install] and link:../get-started/setup-ads.html[setup]
+* link:../use/kubectl-commands-ads.html[Manage] and link:../use/monitor-with-cloud-insights.html[monitor] performance
+* link:../use/monitor-with-cloud-insights.html[Monitor with Cloud Insights]
+* link:../support/get-help-ads.html[Get help] and link:../support/autosupport.html[use automatic support monitoring]
+
+== Find more information
+
+* link:../release-notes/known-issues.html[Known issues]
+* link:../release-notes/known-limitations.html[Known limitations]
+* https://kb.netapp.com/Special:Search?qid=&fpid=230&fpth=&query=netapp+data+store&type=wiki[NetApp Knowledge Base articles^]

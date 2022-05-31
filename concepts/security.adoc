@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: concepts/security.html
+keywords: how astra works, how Astra security works, what Astra is, astra data store, kubernetes
+summary: Astra Data Store uses several methods to secure client and administrator access to storage, protect communication and data, and protect against viruses.
+---
+
+= Security in Astra Data Store preview
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+Astra Data Store preview uses several methods to secure client and administrator access to storage, protect communication and data, and protect against viruses.
+
+Astra Data Store preview uses the following security methods:
+
+* Communication encryption using mutual transport layer security (mTLS)
+* Role-based access control, which governs access to features
+* Deployment security
+* Certificate management
+* Software encryption at rest including internal key management
+
+
+
+
+== For more information
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^]
+* https://docs.netapp.com/us-en/astra/index.html[Astra Control Service documentation^]
+* https://docs.netapp.com/us-en/astra-control-center/[Astra Control Center documentation^]
+* https://docs.netapp.com/us-en/trident/index.html[Astra Trident documentation^]
+* https://docs.netapp.com/us-en/astra-automation/index.html[Use the Astra Control API^]
+* https://docs.netapp.com/us-en/cloudinsights/[Cloud Insights documentation^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP documentation^]

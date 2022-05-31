@@ -1,0 +1,15 @@
+section: get-started
+title: Get started
+entries:
+  - title: Astra Data Store preview requirements
+    url: /get-started/requirements.html
+  - title: Quick start for Astra Data Store preview
+    url: /get-started/quick-start.html
+  - title: Install Astra Data Store preview
+    url: /get-started/install-ads.html
+  - title: Set up Astra Data Store preview components
+    url: /get-started/setup-ads.html
+  - title: Astra Data Store preview limits
+    url: /get-started/capabilities.html
+  - title: FAQ
+    url: /get-started/faq-ads.html

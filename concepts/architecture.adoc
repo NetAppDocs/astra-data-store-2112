@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: concepts/architecture.html
+keywords: astra, astra datastore, architecture, deployment, astra data store, kubernetes, netapp, clusters, trident
+summary: Astra Data Store can be deployed on a standalone Kubernetes cluster serving persistent volumes to Kubernetes applications running in a separate cluster, on a Kubernetes cluster also hosting other apps on the same node pool, or on a Kubernetes cluster also hosting apps on a different node pool.
+---
+
+= Astra Data Store preview deployment models
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+Astra Data Store preview manages storage drives directly on the hosts using an application deployed and orchestrated with Kubernetes.
+
+You can install Astra Data Store preview on bare metal or virtual servers by using one of the following options:
+
+*	Deploy on a standalone dedicated Kubernetes cluster serving persistent volumes to Kubernetes applications running in a separate cluster (standalone cluster).
+*	Deploy on a Kubernetes cluster also hosting other workload applications on the same node pool (converged cluster).
+*	Deploy on a Kubernetes cluster also hosting other workload applications on a different node pool (disaggregated cluster).
+
+link:../get-started/requirements.html[Learn more about the Astra Data Store hardware requirements].
+
+Astra Data Store preview is part of the Astra product family. To get a perspective on the entire Astra family, see https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^].
+
+== Astra Data Store preview ecosystem
+Astra Data Store preview works with the following:
+
+* *Astra Control Center*: Use Astra Control Center software for application-aware data management of Kubernetes clusters in your on-premise environment. Easily back up Kubernetes apps, migrate data to a different cluster, and instantly create working application clones.
++
+Astra Control Center supports OpenShift Kubernetes clusters with an Astra Trident storage backend with ONTAP or an Astra Data Store preview storage backend.
+
+* *Astra Trident*: As a fully supported open source storage provisioner and orchestrator maintained by NetApp, Astra Trident enables you to create storage volumes for containerized applications managed by Docker and Kubernetes.
++
+You use Astra Trident to create volumes on Astra Data Store preview.
+
+* *Cloud Insights*:  A NetApp cloud infrastructure monitoring tool, Cloud Insights enables you to monitor performance and utilization for your Kubernetes clusters managed by Astra Control. Cloud Insights correlates storage usage to workloads.
++
+When you enable the Cloud Insights connection in Astra Control, telemetry information shows in Astra Control UI pages. Cloud Insights displays information about resources managed in Astra Data Store preview.
+
+
+== Astra Data Store preview interfaces
+
+You can complete tasks using different interfaces:
+
+* *Web user interface (UI)*: Astra Control Service and Astra Control Center use the same web-based UI where you can manage, migrate and protect apps. This UI also displays information about Astra Data Store preview volumes.
+
+* *API*: Astra Control Service and Astra Control Center use the same Astra Control API. Using the API, you can perform the same tasks that you would using the UI. You can also retrieve information about Astra Data Store preview with the Astra Control API.
+
+* *kubectl commands*: To work with Astra Data Store preview, you can use kubectl commands directly.
+
+* *Kubernetes extension*: Additionally, you can use the Astra Data Store preview kubernetes API extension.
++
+Custom Resource Definitions (CRDs) are extensions to the kubernetes REST API that are created when the Astra Data Store preview operator is deployed. External entities interact with the CRDs by making calls to the Kubernetes API server. Astra Data Store preview watches for updates to specific CRDs and then makes calls to internal REST APIs.
+
+
+
+== For more information
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^]
+* https://docs.netapp.com/us-en/astra/index.html[Astra Control Service documentation^]
+* https://docs.netapp.com/us-en/astra-control-center/[Astra Control Center documentation^]
+* https://docs.netapp.com/us-en/trident/index.html[Astra Trident documentation^]
+* https://docs.netapp.com/us-en/astra-automation/index.html[Use the Astra Control API^]
+* https://docs.netapp.com/us-en/cloudinsights/[Cloud Insights documentation^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP documentation^]

@@ -1,0 +1,232 @@
+---
+sidebar: sidebar
+permalink: use/kubectl-commands-ads.html
+keywords: astra, astra data store, astra datastore, kubectl
+summary: You can use kubectl commands directly with Astra Data Store.
+---
+
+= Manage Astra Data Store preview assets with kubectl commands
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+You can manage Astra Data Store preview assets by using kubectl commands and by using the Kubernetes API extension.
+
+
+To learn how to deploy a sample app, see link:../use/deploy-apps.html[Deploy a test application].
+
+For the following cluster maintenance information, see link:../use/maintain-cluster.html[Manage the cluster]:
+
+* Place a node in maintenance mode
+* Replace a drive
+* Add a node
+* Replace a node
+
+.What you'll need
+
+* The Astra Data Store preview kubectl plugin you installed in link:../get-started/install-ads.html[Install Astra Data Store preview]
+
+== List Kubernetes custom API resources for Astra Data Store preview
+You can use kubectl commands inside of Kubernetes to interact with and observe the state of your Astra Data Store preview cluster.
+
+Each item listed from the `api-resources` command represents a Kubernetes custom resource definition (CRD) that Astra Data Store preview uses internally to manage your cluster.
+
+This list is particularly helpful to get shortnames of each Astra Data Store preview object to reduce your typing, as shown later.
+
+. Display a list of Kubernetes custom API resources for Astra Data Store preview :
++
+----
+kubectl api-resources --api-group astrads.netapp.io
+----
++
+Response:
++
+----
+NAME                   SHORTNAMES  APIGROUP           NAMESPACED  KIND
+astradsversions         adsve      astrads.netapp.io  true        AstraDSVersion
+astradsclusters         adscl      astrads.netapp.io  true        AstraDSCluster
+astradslicenses         adsli      astrads.netapp.io  true        AstraDSLicense
+astradsnodeinfoes       adsni      astrads.netapp.io  true        AstraDSNodeInfo
+astradsvolumes          adsvo      astrads.netapp.io  true        AstraDSVolume
+astradsqospolicies      adsqp      astrads.netapp.io  true        AstraDSQosPolicy
+astradsexportpolicies   adsep      astrads.netapp.io  true        AstraDSExportPolicy
+astradsvolumesnapshots  adsvs      astrads.netapp.io  true        AstraDSVolumeSnapshot
+astradsvolumefiles      adsvf      astrads.netapp.io  true        AstraDSVolumeFiles
+astradsautosupports     adsas      astrads.netapp.io  true        AstraDSAutoSupport
+astradsfaileddrives     adsfd      astrads.netapp.io  true        AstraDSFailedDrive
+astradsnodemanagements  adsnm      astrads.netapp.io  true        AstraDSNodeManagement
+----
+
+. To get all the current Astra Data Store preview objects in your Kubernetes cluster, use the `kubectl get ads -A` command:
++
+----
+kubectl get ads -A
+----
++
+Response:
++
+----
+NAMESPACE        NAME                                        AGE
+astrads-system   astradsqospolicy.astrads.netapp.io/bronze   45h
+astrads-system   astradsqospolicy.astrads.netapp.io/gold     45h
+astrads-system   astradsqospolicy.astrads.netapp.io/silver   45h
+
+NAMESPACE        NAME                                                   STATUS    VERSION       SERIAL NUMBER   MVIP           AGE
+astrads-system   astradscluster.astrads.netapp.io/astrads-cluster-9f1   created   arda-9.11.1   e000000009      10.224.8.146   46h
+
+NAMESPACE        NAME                                                  AGE
+astrads-system   astradsnodeinfo.astrads.netapp.io/englab.netapp.com   46h
+astrads-system   astradsnodeinfo.astrads.netapp.io/englab.netapp.com   46h
+astrads-system   astradsnodeinfo.astrads.netapp.io/englab.netapp.com   46h
+astrads-system   astradsnodeinfo.astrads.netapp.io/englab.netapp.com   46h
+
+NAMESPACE        NAME                                              AGE
+astrads-system   astradsversion.astrads.netapp.io/astradsversion   46h
+
+NAMESPACE        NAME                                            AGE
+astrads-system   astradsvolumefiles.astrads.netapp.io/test23     27h
+astrads-system   astradsvolumefiles.astrads.netapp.io/test234    27h
+astrads-system   astradsvolumefiles.astrads.netapp.io/test2345   4h22m
+
+NAMESPACE        NAME                                       SIZE   IP               CLUSTER             CREATED
+astrads-system   astradsvolume.astrads.netapp.io/test234    21Gi   172.25.123.123   astrads-cluster-9f1  true
+astrads-system   astradsvolume.astrads.netapp.io/test2345   21Gi   172.25.123.123   astrads-cluster-9f1  true
+
+NAMESPACE        NAME                                                                                SEQUENCE COMPONENT      EVENT                   TRIGGER   PRIORITY  SIZE   STATE
+astrads-system   astradsautosupport.astrads.netapp.io/controlplane-adsclustercreatesuccess-20211214t 9        controlplane   adsclustercreatesuccess k8sEvent  notice    0      uploaded
+astrads-system   astradsautosupport.astrads.netapp.io/controlplane-daily-20211215t0                  15       controlplane   daily                   periodic  notice    0      uploaded
+astrads-system   astradsautosupport.astrads.netapp.io/controlplane-daily-20211216t0                  20       controlplane   daily                   periodic  notice    0      uploaded
+astrads-system   astradsautosupport.astrads.netapp.io/storage-callhome.dbs.cluster.cannot.sync.blocks 10      storage        callhome.dbs.cluster.cannot.sync.blocks   firetapEvent   emergency   0      uploaded
+
+NAMESPACE        NAME                                  ADSCLUSTER          VALID PRODUCT          EVALUATION ENDDATE    VALIDATED
+astrads-system   astradslicense.astrads.netapp.io/e0   astrads-cluster-9f1 true  Astra Data Store true       2022-02-07 2021-12-16T20:43:23Z
+----
+
+. Use one of the short names to show the current state of volumes in the cluster:
++
+----
+kubectl get adsvo -A
+----
++
+Response:
++
+----
+NAMESPACE        NAME       SIZE   IP               CLUSTER                   CREATED
+astrads-system   test234    21Gi   172.25.138.109   astrads-cluster-9f1c99f   true
+astrads-system   test2345   21Gi   172.25.138.111   astrads-cluster-9f1c99f   true
+----
+
+
+
+== Use the help option on the kubectl extension
+
+The `kubectl astrads` command includes an `-h` switch that provides usage and flag documentation for your convenience.
+
+
+. Show help for all commands in the Astra Data Store preview kubectl extension:
++
+----
+kubectl astrads -h
+----
++
+Response:
++
+----
+A kubectl plugin for inspecting your AstraDS deployment
+
+Usage:
+  astrads [command]
+
+Available Commands:
+  asup        Manage AutoSupport
+  clusters    Manage clusters
+  drives      Manage drives in a cluster
+  faileddrive Manage drive replacement in a cluster
+  help        Help about any command
+  license     Manage license in the astrads cluster
+  maintenance Manage maintenance status of a node
+  monitoring  Manage Monitoring Output
+  nodes       Manage nodes in a cluster
+
+Flags:
+      --as string                      Username to impersonate for the operation
+      --as-group stringArray           Group to impersonate for the operation, this flag can be
+                                         repeated to specify multiple groups.
+      --cache-dir string               Default HTTP cache directory
+                                         (default "/u/arda/.kube/http-cache")
+      --certificate-authority string   Path to a cert file for the certificate authority
+      --client-certificate string      Path to a client certificate file for TLS
+      --client-key string              Path to a client key file for TLS
+      --cluster string                 The name of the kubeconfig cluster to use
+      --context string                 The name of the kubeconfig context to use
+  -h, --help                           help for astrads
+        --insecure-skip-tls-verify       If true, the server's certificate will not be checked
+                                         for validity. This will make your HTTPS connections insecure
+        --kubeconfig string              Path to the kubeconfig file to use for CLI requests.
+    -n, --namespace string               If present, the namespace scope for this CLI request
+        --request-timeout string         The length of time to wait before giving up on a single
+                                         server request. Non-zero values should contain a
+                                         corresponding time unit (e.g. 1s, 2m, 3h).
+                                         A value of zero means don't timeout requests.
+                                         (default "0")
+    -s, --server string                  The address and port of the Kubernetes API server
+        --token string                   Bearer token for authentication to the API server
+        --user string                    The name of the kubeconfig user to use
+----
+
+.  Use `astrads [command] --help` for more information about a command.
++
+----
+kubectl astrads asup collect --help
+----
++
+Response:
++
+----
+  Collect the autosupport bundle by specifying the component to collect. It will default to manual event.
+
+  Usage:
+    astrads asup collect [flags]
+
+  Examples:
+    # Control plane collection
+      kubectl astrads collect --component controlplane example1
+
+      # Storage collection for single node
+      kubectl astrads collect --component storage --nodes node1 example2
+
+      # Storage collection for all nodes
+      kubectl astrads collect --component storage --nodes all example3
+
+      # Collect but don't upload to support
+      kubectl astrads collect --component controlplane --local example4
+
+      NOTE:
+      --component storage and --nodes <name> are mutually inclusive.
+      --component controlplane and --nodes <name> are mutually exclusive.
+
+    Flags:
+      -c, --component string     Specify the component to collect: [storage , controlplane , vasaprovider, all]
+      -d, --duration int         Duration is the duration in hours from the startTime for collection
+                                   of AutoSupport.
+                                   This should be a positive integer
+      -e, --event string         Specify the callhome event to trigger. (default "manual")
+      -f, --forceUpload          Configure an AutoSupport to upload if it is in the compressed state
+                                   and not
+                                   uploading because it was created with the 'local' option or if
+                                   automatic uploads of AutoSupports is disabled
+                                   at the cluster level.
+      -h, --help                 help for collect
+      -l, --local                Only collect and compress the autosupport bundle. Do not upload
+                                   to support.
+                                   Use 'download' to copy the collected bundle after it is in
+                                   the 'compressed' state
+           --nodes string          Specify nodes to collect for storage component. (default "all")
+      -t, --startTime string     StartTime is the starting time for collection of AutoSupport.
+                                   This should be in the ISO 8601 date time format.
+                                   Example format accepted:
+                                   2021-01-01T15:20:25Z, 2021-01-01T15:20:25-05:00
+      -u, --usermessage string   UserMessage is the additional message to include in the
+                                   AutoSupport subject.
+                                   (default "Manual event trigger from CLI")
+----

@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: support/autosupport.html
+keywords: how to use autosupport, autosupport, asup, logs, asup bundle, support ticket, support bundle
+summary: NetApp provides support for Astra Data Store preview in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB) articles and a Slack channel. Your Astra Data Store preview account includes remote technical support via web ticketing.
+---
+
+= Automatic support monitoring
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/support/
+
+AutoSupport monitors the Astra Data Store preview system run-time and information and sends messages to NetApp Support. These system components can be monitored, depending on your configuration:
+
+* Control plane
+* Storage
+
+AutoSupport is enabled by default during link:../get-started/install-ads.html#install-the-astra-data-store-cluster[Astra Data Store preview cluster installation] or after an AutoSupport custom resource (CR) is applied to the cluster. Once enabled, AutoSupport (ASUP) bundles are automatically uploaded to the https://mysupport.netapp.com/site/[NetApp Support Site (NSS)^] or made available for manual downloads.
+
+.Options
+* <<AutoSupport triggers and scenarios>>
+* <<Configure custom control plane AutoSupport collection>>
+* <<Configure custom storage AutoSupport collection>>
+* <<List ASUPs in the system>>
+* <<Download an ASUP Bundle>>
+* <<Upload a core file>>
+
+== AutoSupport triggers and scenarios
+AutoSupport bundles are triggered in the following ways:
+
+* *Periodically*: ASUP Bundles are created at intervals defined in a CR.
+* *User Triggered*: You can manually create your own ASUPs to look at the log.
+* *Coredumps*: If there are core dumps on a node, an ASUP is generated, and the core is sent to NetApp for further investigation.
+* *Callhome event based*: An ASUP is generated from a particular callhome event from the operating system.
+* *Kubernetes event based*: An ASUP is generated from a particular kubernetes event in the control plane.
+
+These trigger scenarios generate one of these Autosupport types:
+
+* *ControlPlane AutoSupport*: A collection of Astra Data Store preview control plane logs and CRs.
+* *Storage AutoSupport*: A collection of storage reports and performance data.
+* *Core Dump AutoSupport*: A collection of system core dumps.
+
+== Configure custom control plane AutoSupport collection
+You can create a custom AutoSupport collection configuration that reports on control plane events. Most installations already enable periodic event reporting by default during link:../get-started/install-ads.html#install-the-astra-data-store-cluster[Astra Data Store preview cluster installation]. This procedure describes how to configure an AutoSupport CR that reports based on parameters you select:
+
+.Steps
+. Customize the following command to create a control plane collection CR:
++
+----
+kubectl astasds asup collect -c controlplane --namespace=astrads-system
+----
+
+.. Define custom parameters:
+* `<myASUPname>`: The name of the AutoSupport CR to be generated.
+* `-e <event name>`: The event name that triggers collection. The event name should be predefined in component.yaml (which is mounted to support controllers).
++
+Example:
++
+----
+kubectl astrasds asup collect -c controlplane custom-asup-name -e debug --namespace=astrads-system
+----
+
+.. Add additional parameters as needed for your system:
+* `--cluster`: This flag is required in a multi-cluster environment.
+* `--localCollection`: Enables local collection. The default is `false`.
+* `--forceUpload`: Enables force upload. The default is `false`.
+* `--retry`: Enables retry. The default is `false`.
+
+== Configure custom storage AutoSupport collection
+You can create a custom AutoSupport collection configuration that reports on storage component events. Most installations already enable periodic event reporting by default during link:../get-started/install-ads.html#install-the-astra-data-store-cluster[Astra Data Store preview cluster installation]. This procedure describes how to configure an AutoSupport CR that reports based on parameters you select:
+
+.Steps
+. Customize the following command to create a storage collection CR:
++
+----
+kubectl astrasds asup collect -c storage --namespace=astrads-system
+----
+
+.. Define custom parameters:
+* `<myASUPname>`: The name of the AutoSupport CR to be generated.
+* `-e <event name>`: The event name that triggers collection. The event name should be predefined in component.yaml (which is mounted to support controllers).
++
+Example with performance event:
++
+----
+kubectl-astrads asup collect -c storage -e performance example-perf-storage-asup
+----
+* `-t <ISO_format> -d <hours>`: Collect a storage ASUP for all nodes for a specified duration. Use standard ISO date time format (`-t`) with a duration (`d`) in hours. For example:
++
+----
+kubectl astrads asup collect -c storage -t 2021-01-01T15:00:00Z -d 24
+----
+* `--nodes <nodename>`: Collect a storage ASUP for specified node. For example:
++
+----
+kubectl astrads asup collect -c storage --nodes example1
+----
+
+* `--nodes nodename1,nodename2,nodename3`: Collect a storage ASUP for specified nodes:
++
+----
+kubectl astrads asup collect -c storage --nodes example1,example2,example3
+----
+
+.. Add additional parameters as needed for your system:
+* `--cluster`: This flag is required in a multi-cluster environment.
+* `--localCollection`: Enables local collection. The default is `false`.
+* `--forceUpload`: Enables force upload. The default is `false`.
+* `--retry`: Enables retry. The default is `false`.
+
+
+== List ASUPs in the system
+Use the following command to list ASUPs in the system by name:
+
+----
+kubectl astrasds asup list --namespace=astrads-system
+----
+
+Sample response:
+
+----
+NAMESPACE      NAME                                  SEQUENCE NUMBER EVENT                      SIZE  STATE       LOCAL COLLECTION
+astrads-system  storage-callhome.reboot.unknown-...  1               callhome.reboot.unknown    0     uploaded    astrads-ds-support-tdl2h:
+astrads-system  storage-callhome.reboot.unknown-...  2               callhome.reboot.unknown    0     uploaded    astrads-ds-support-xx6n8:
+astrads-system  storage-callhome.reboot.unknown-...  3               callhome.reboot.unknown    0     uploaded    astrads-ds-support-qghnx:
+----
+
+== Download an ASUP Bundle
+You can download locally-collected ASUP bundles using this command. Use `-o <location>` to specify a location other than the current working directory:
+
+----
+./kubectl-astrasds asup download <ASUP_bundle_name> -o <location>
+----
+
+== Upload a core file
+If a service crashes, an AutoSupport (ASUP) message is created along with a file containing relevant memory contents at the time of the crash (known as a core file). Astra Data Store preview automatically uploads the ASUP message to NetApp Support, but you need to manually upload the core file so that it is associated with the ASUP message.
+
+.Steps
+
+. Use the following `kubectl` commands to view the ASUP message:
++
+----
+kubectl astrasds asup list --namespace=astrads-system
+----
++
+You should see output similar to the following:
++
+----
+NAMESPACE       NAME                      SEQUENCE NUMBER  EVENT     SIZE       STATE       LOCAL COLLECTION
+
+astrads-system  storage-coredump-2021...  1                coredump  197848373  compressed  astrads-ds-support-sxxn7:/var/...
+----
+. Use the following `kubectl` commands to download the core file from the ASUP message. Use the `-o` option to specify a destination directory for the downloaded file.
++
+----
+kubectl astrads asup download storage-coredump-20211216t140851311961680 -o <absolute_path_to_destination_directory>
+----
++
+NOTE: In rare cases, you might not be able to download the core file because other core files have taken its place. When this happens, the command returns the error `Cannot stat: No such file or directory`. If you see this error, you can link:get-help-ads.html[get help].
+
+. Open a web browser and browse to the https://upload.netapp.com/sg[NetApp Authenticated File Upload tool^], entering your NetApp Support credentials if you are not already logged in.
+. Select the *I don't have a case number* check box.
+. In the *Closest Region* menu, select the closest region to you.
+. Select the *Upload* button.
+. Browse to and select the core file you downloaded earlier.
++
+The upload begins. When the upload is finished, a success message appears.
+
+[discrete]
+== Find more information
+* https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp[How to upload a file to NetApp (login required)^]

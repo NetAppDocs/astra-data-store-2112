@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: troubleshooting/ads-maintenance-mode.html
+keywords: astra, astra data store, astra datastore, kubectl, maintenance mode
+summary: When you need to perform host maintenance or package upgrades, you should place the node in maintenance mode.
+---
+
+= Place a node in maintenance mode
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/troubleshooting/
+
+When you need to perform host maintenance or package upgrades, you should place the node in maintenance mode.
+
+NOTE: The node must be part of the Astra Data Store cluster.
+
+When a node is in maintenance mode, you cannot add a node.
+
+.Steps
+
+. Display the node details.
++
+----
+ kubectl get nodes
+----
+
+. Get details of volumes:
++
+----
+ kubectl get astradsvolumes -n astrads-system -o wide
+NAME      SIZE  IP              CLUSTER          EXPORTPOLICY     CREATED
+nfsvol1   102Gi 10.111.111.111  ftap-astra-012   exppol1    true
+nfsvol10  102Gi 10.111.111.112  ftap-astra-012   exppol10   true
+nfsvol11  102Gi 10.111.111.113  ftap-astra-012   exppol11   true
+----
+
+. Enable maintenance mode:
++
+----
+ kubectl astrads maintenance list
+NAME    NODE NAME       IN MAINTENANCE  MAINTENANCE STATE       MAINTENANCE VARIANT
+
+ kubectl astrads maintenance create node4 --node-name="nhcitjj1525" --variant=Node
+Maintenance mode astrads-system/node4 created
+
+ kubectl astrads nodes list
+NODE NAME       NODE STATUS     CLUSTER NAME
+nhcitjj1525     Added           ftap-astra-012
+nhcitjj1527     Added           ftap-astra-012
+nhcitjj1526     Added           ftap-astra-012
+nhcitjj1528     Added           ftap-astra-012
+...
+
+ kubectl astrads maintenance list
+NAME    NODE NAME       IN MAINTENANCE  MAINTENANCE STATE       MAINTENANCE VARIANT
+node4   nhcitjj1525     true            ReadyForMaintenance     Node
+----
+
++
+The In Maintenance mode starts as "False" and changes to "True" and the Maintenance state changes from "Preparing for Maintenance" to "Ready for Maintenance."
+
+
+
+
+== For more information
+Also see this information.
+* link:../use/kubectl-commands-ads.html[Manage Astra Data Store assets with kubectl commands].

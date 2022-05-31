@@ -1,7 +1,62 @@
+---
 settings:
-  name: "Product Name"
+  name: Astra Data Store
   internal:
     pdf_enabled: true
   prod:
     pdf_enabled: true
-sidebar: 
+sidebar:
+  entries:
+    - title: Astra Data Store 21.12 docs
+      url: /index.html
+    - section: release-notes
+    - section: concepts
+    - section: get-started
+    - section: use
+    - section: support
+    - title: Legal notices
+      url: /legal-notices.html
+product-family:
+  name: Astra
+  repo: astra-family
+homepage:
+  tiles:
+    - title: Get started
+      #image: ./media/outline_directions_run_black_18dp.png
+      links:
+        - title: Learn about Astra Data Store
+          url: /concepts/intro.html
+        - title: What's in Astra Data Store preview
+          url: /release-notes/whats-new.html
+        - title: Try it out
+          url: /get-started/install-ads.html#edit-and-apply-the-astra-data-store-license
+        - title: Install Astra Data Store preview
+          url: /get-started/install-ads.html
+        - title: Set up Astra Data Store preview
+          url: /get-started/setup-ads.html
+    - title: Use Astra Data Store preview
+      links:
+        - title: Manage with kubectl commands
+          url: /use/kubectl-commands-ads.html
+        - title: Monitor metrics with Cloud Insights
+          url: /use/monitor-with-cloud-insights.html
+        - title: Monitor event logs
+          url: /use/configure-endpoints.html
+        - title: Astra Control Center integration
+          url: /use/ads-acc-ui.html
+    - title: Demos & tutorials
+      links:
+        - title: Future of Kubernetes
+          url: https://cloud.netapp.com/astra-data-store
+        - title: Astra Data Store preview demo
+          url: https://netapp.hubs.vidyard.com/watch/aDmgkBbJhUTZAGmH5XKimA?
+    - title: Blogs & community
+      links:
+        - title: Astra blogs
+          url: https://cloud.netapp.com/blog/topic/astra
+        - title: Slack “containers” channel
+          url: https://netapp.io/slack
+        - title: Kubernetes Hub
+          url: https://cloud.netapp.com/kubernetes-hub
+        - title: Where to get help
+          url: /support/get-help.html
