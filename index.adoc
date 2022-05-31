@@ -6,7 +6,7 @@ lead: Astra Data Store provides persistent storage and data management services 
 summary: Astra Data Store provides persistent storage and data management services for Kubernetes native containerized applications. Astra Data Store is part of the Astra family of products.
 ---
 
-= Astra Data Store preview documentation
+= Astra Data Store preview 21.12 documentation
 :hardbreaks:
 :nofooter:
 :icons: font
