@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: use/monitor-with-prometheus-grafana.html
+keywords: astra, astra data store, kubectl, endpoints, prometheus, grafana, visualization
+summary: You can monitor Astra Data Store assets using Prometheus and Grafana.
+---
+
+= Monitor metrics with Prometheus and Grafana
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
+
+// Are these tools installed on the ADS K8s cluster, or a different cluster?  If a different cluster, how do you get them to talk?  What extra config is needed?
+
+You can monitor Astra Data Store preview metrics with Prometheus and Grafana. You can configure Prometheus to gather metrics from the Astra Data Store preview Kubernetes cluster metrics endpoint, and you can use Grafana to visualize the metrics data.
+
+.What you'll need
+
+* Make sure that you have downloaded and installed the Prometheus and Grafana packages on the Astra Data Store preview cluster or a different cluster that can communicate with the Astra Data Store preview cluster. Follow the instructions in the official documentation to install each tool:
+
+** https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/How_to_deploy_Prometheus_with_Astra_Data_Store[Install Prometheus^]
+** https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/How_to_set_up_Grafana_for_monitoring_Astra_Data_Store_cluster[Install Grafana^]
+
+* Prometheus and Grafana need to be able to communicate with the Astra Data Store preview Kubernetes cluster. If Prometheus and Grafana are not installed on the Astra Data Store preview cluster, you need to make sure they can communicate with the metrics service running on the Astra Data Store preview cluster.
+
+== Configure Prometheus
+Astra Data Store preview exposes a metrics service on TCP port 9341 in the Kubernetes cluster. You need to configure Prometheus to collect metrics from this service.
+
+.Steps
+//. Log in to the Astra Data Store preview cluster.
+. Edit the `prometheus.yml` configuration file for your Prometheus installation.
+. Add a service target that points to the Astra Data Store preview service name and its port. For example:
++
+----
+scrape_configs:
+static_configs:
+- targets: ['astrads-metrics-service.astrads-system:9341']
+----
+. Start the Prometheus service.
+
+== Configure Grafana
+You can configure Grafana to display the metrics collected by Prometheus.
+
+.Steps
+//. Log in to the Astra Data Store preview cluster.
+. Edit the `datasources.yaml` configuration file for your Grafana installation.
+. Add Prometheus as a data source. For example:
++
+----
+apiVersion: 1
+
+datasources:
+  - name: astradatastore-prometheus
+    type: prometheus
+    access: proxy
+    url: http://localhost:9090
+    jsonData:
+      manageAlerts: false
+----
+. Start the Grafana service.
+. Follow the instructions in the Grafana documentation to https://grafana.com/docs/grafana/latest/getting-started/getting-started/[get started^].
+
+== Import Grafana dashboard templates
+The bundle file you downloaded to install Astra Data Store preview includes Grafana dashboard template files that you can import from within Grafana. These dashboard templates can help you see the types of metrics that are available from Astra Data Store preview and how you can view them.
+
+.Steps
+. Open the Astra Data Store preview `.tar.gz` bundle.
+. Open the `manifests` directory.
+. Extract the `grafana_cluster.json` and `grafana_volume.json` files.
+. Using the Grafana web UI, https://grafana.com/docs/grafana/latest/dashboards/export-import/[import the dashboard template files in to Grafana^].

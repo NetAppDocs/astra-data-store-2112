@@ -1,0 +1,81 @@
+---
+sidebar: sidebar
+permalink: concepts/intro.html
+keywords: introduction, how astra works, how Astra works, what Astra is, astra data store, datastore, kubernetes
+summary: Astra Data Store is a Kubernetes native shared file service for both container and VM workloads delivering enterprise data management.
+---
+
+= Intro to Astra Data Store preview
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+Astra Data Store preview is Kubernetes-native, shared file software-defined storage (SDS) solution for on-premises data centers that helps customers manage their cloud-native applications. Astra Data Store provides a native shared file service for both container and VM workloads along with NetApp enterprise data management.
+
+With Astra Data Store preview, you can do the following:
+
+* *Support Kubernetes containerized workloads*: With enterprise data management services and tools you are used to.
+* *Use Kubernetes "application-as-a-service" platform for DevOps*: Create elastic, software-defined, self-serve platforms that deliver automated, repeatable services, removing complexity from developers​.
+
+== Astra product family
+
+The Astra family of products provides Kubernetes application data lifecycle management that simplifies operations for stateful applications. Easily protect, back up, and migrate Kubernetes workloads, and instantly create working application clones.
+
+Astra offerings include:
+
+* *Astra Control*: Use application-aware, data management tools that manage, protect, and move Kubernetes workloads in both public clouds and on-premises.​
+** *Astra Control Service*: Use a service managed by NetApp for data management of Kubernetes workloads in public clouds.
+** *Astra Control Center*: Use self-managed software for data management of on-premises Kubernetes workloads.
+* *Astra Data Store preview*: Use a Kubernetes-native shared file service for container and VM workloads for enterprise data management.
+* *Astra Trident*: Use Container Storage Interface (CSI) compliant storage provisioning and management for Kubernetes workloads with NetApp storage providers.
+
+See https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^].
+
+
+image:astra-product-family.png[Astra product family]
+
+
+== Astra Data Store preview features
+
+Astra Data Store preview provides end-to-end Kubernetes-native storage and data management for your cloud-native applications​ with these features:
+
+* *Kubernetes-native shared file service*: Provides a shared file service native to Kubernetes using a standard NFS client as a unified data store for containers and VMs.​
+
+* *Cloud scale*: Offers Kubernetes-native multiple parallel file systems on the same resource pool to achieve cloud-like scale and utilization, removing the need to manage storage separately from the cluster.
+
+* *API-first approach*: Delivers infrastructure as code for automated cluster and workload management​.
+
+* *Enterprise-grade data management*: Delivers automated application-aware data protection and disaster recovery:
+
+** *NetApp technologies*: Leverages NetApp data management technology for snapshots, backups, replication, and cloning so users can build and deploy enterprise apps in Kubernetes. ​
+
+** *Resiliency*: Uses replication and erasure coding technologies for Kubernetes-native workloads for greater resiliency.
+
+** *Data efficiency*: Controls cost as you scale through inline deduplication and compression features.
+
+* *Fits into your existing environment*: Supports your microservices-based and traditional workloads, serves major Kubernetes distributions, provides file storage, and runs on your choice of hardware​.
+
+* *Integration with NetApp Cloud Insights*: Delivers observability, analytics and monitoring for continuous optimization​.
+​
+
+
+== Get started with Astra Data Store preview
+
+
+First, link:../get-started/requirements.html[learn about Astra Data Store requirements].
+
+Then, link:../get-started/quick-start.html[get started].
+
+
+
+
+
+== For more information
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html[Astra family introduction^]
+* https://docs.netapp.com/us-en/astra/index.html[Astra Control Service documentation^]
+* https://docs.netapp.com/us-en/astra-control-center/[Astra Control Center documentation^]
+* https://docs.netapp.com/us-en/trident/index.html[Astra Trident documentation^]
+* https://docs.netapp.com/us-en/astra-automation/index.html[Use the Astra Control API^]
+* https://docs.netapp.com/us-en/cloudinsights/[Cloud Insights documentation^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP documentation^]

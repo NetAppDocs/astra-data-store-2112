@@ -1,0 +1,9 @@
+section: troubleshooting
+title: Troubleshooting
+entries:
+  - title: Place a node in maintenance mode
+    url: /troubleshooting/ads-maintenance-mode.html
+  - title: Replace a drive
+    url: /troubleshooting/ads-replace-drive.html
+  - title: Replace a node
+    url: /troubleshooting/ads-replace-node.html

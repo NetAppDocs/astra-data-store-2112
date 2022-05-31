@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: support/get-help-ads.html
+keywords: get help, get support, knowledgebase, slack, phone, web, ticket, contact support, support ticket, support bundle
+summary: NetApp provides support for Astra Data Store in a variety of ways. Free self-support options are available 24x7, such as knowledgebase (KB) articles and a Slack channel.
+---
+
+= Get help
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/support/
+
+NetApp provides support for Astra Data Store preview in a variety of ways. Free self-service support options are available 24x7, such as knowledgebase (KB) articles and a Slack channel.
+
+IMPORTANT: You can get community technical support for Astra Data Store preview. Case creation using the https://mysupport.netapp.com/site/[NetApp Support Site (NSS)^] is not available for the preview release. You can get in touch with Support via the feedback option or use the Slack channel for self service.
+
+
+== Self-service support options
+
+These options are available for free 24x7:
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra[Knowledge base (login required)^]
++
+Search for articles, FAQs, or Break Fix information related to Astra Data Store preview.
+
+* Documentation
++
+This is the doc site that you're currently viewing.
+
+* https://netapp.io/slack[NetApp "containers" Slack channel^]
+
++
+Go to the "containers" channel to connect with peers and experts.
+
+* Feedback email
++
+Send an email to astra.feedback@netapp.com to let us know your thoughts, ideas, or concerns.
+
+
+[discrete]
+== Find more information
+* https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp[How to upload a file to NetApp (login required)^]
+* https://kb.netapp.com/Special:Search?qid=&fpid=230&fpth=&query=netapp+data+store&type=wiki[NetApp Knowledge Base articles^]

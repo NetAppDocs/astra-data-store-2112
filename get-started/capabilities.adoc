@@ -1,0 +1,52 @@
+---
+sidebar: sidebar
+permalink: get-started/capabilities.html
+keywords: kubernetes cluster, cluster requirements, version requirements, supported versions, apps, supported apps, mariadb, mysql, postgres, kubernetes version, ubuntu, image type, networking
+summary: Get started by verifying support for your environment.
+---
+
+= Astra Data Store preview limits
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+Astra Data Store is Kubernetes-native, shared file software-defined storage (SDS) solution for on-premises data centers that helps customers manage their cloud-native applications.
+
+The Astra Data Store preview release has the following resource limits.
+
+|===
+|Resource |Minimum |Maximum
+
+|Number of nodes in Astra Data Store preview cluster
+|4
+|5
+
+|Number of persistent volumes per node
+|N/A
+|10
+
+|Total provisioned capacity of persistent volumes per node
+|N/A
+|1TiB
+
+|Volume size
+|20MiB
+|1TiB
+
+|Snapshots per volume
+|0
+|256
+
+|Clones per Volume
+|0
+|9
+|===
+
+NOTE: Astra Data Store preview does not support VM workloads. VMware vVol workload support will be available in a future release.
+
+
+NOTE: Astra Data Store preview is performance throttled and should not be used for performance characterization.
+
+//== What's next
+
+//Ensure your configuration meets the link:requirements.html[requirements].

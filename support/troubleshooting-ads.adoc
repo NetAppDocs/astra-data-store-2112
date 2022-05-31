@@ -1,0 +1,15 @@
+---
+sidebar: sidebar
+permalink: support/troubleshooting-ads.html
+keywords: get help, get support, troubleshooting
+summary: Learn how to work around some common problems you might encounter.
+---
+
+= Troubleshooting
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/support/
+
+Learn how to work around some common problems you might encounter.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra

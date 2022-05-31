@@ -1,0 +1,13 @@
+section: concepts
+title: Concepts
+entries:
+  - title: Intro to Astra Data Store
+    url: /concepts/intro.html
+  - title: Deployment models
+    url: /concepts/architecture.html
+  - title: Cluster expansion
+    url: /concepts/expansion.html
+  - title: Storage efficiency
+    url: /concepts/storage-efficiency.html
+  - title: Security
+    url: /concepts/security.html

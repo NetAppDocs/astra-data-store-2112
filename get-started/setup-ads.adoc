@@ -1,0 +1,442 @@
+---
+sidebar: sidebar
+permalink: get-started/setup-ads.html
+keywords: astra, astra data store, setup, trident, backend
+summary: After you have installed Astra Data Store and addressed some environmental prerequisites, you'll install or update Astra Trident, configure K8s snapshot capabilities, set up the storage backend, and create a default storage class.
+---
+
+= Set up Astra Data Store preview components
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+After you have installed Astra Data Store preview and addressed some environmental prerequisites, you'll install Astra Trident, configure Kubernetes snapshot capabilities, set up the storage backend, and create a default storage class:
+
+* <<Install Astra Trident>>
+* <<Install Kubernetes snapshot CRDs and Controller>>
+* <<Set up Astra Data Store as storage backend>>
+* <<Create a default Astra Data Store storage class>>
+
+== Install Astra Trident
+
+For Astra Data Store preview, you'll need to install Astra Trident 21.10.1. You can install Astra Trident using one of the following options:
+
+* https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html[Install Astra Trident using tridentctl^].
+* https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html[Install Astra Trident using Trident operator^].
++
+NOTE: You can deploy the Trident operator either manually or using Helm.
+
+== Install Kubernetes snapshot CRDs and Controller
+
+Kubernetes snapshot CRDs and controller are required to create persistent volume claim (PVC) snapshots. If you do not already have the CRD and controller installed for your environment, run the following commands to install them.
+
+NOTE: The following command examples assume `/trident` as the directory; however, the directory you use can be any directory that you used to download the YAML files.
+
+.What you'll need
+* link:requirements.html[Before you begin installation, prepare your environment for Astra Data Store preview deployment].
+* Download the link:https://github.com/kubernetes-csi/external-snapshotter/tree/master/deploy/kubernetes/snapshot-controller[Kubernetes snapshot controller YAML files^]:
+** setup-snapshot-controller.yaml
+** rbac-snapshot-controller.yaml
+* Download the link:https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd[YAML CRDs^]:
+** snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+** snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+** snapshot.storage.k8s.io_volumesnapshots.yaml
+
+.Steps
+. Apply snapshot.storage.k8s.io_volumesnapshotclasses.yaml:
++
+----
+kubectl apply -f trident/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+----
++
+Response:
++
+----
+customresourcedefinition.apiextensions.k8s.io/volumesnapshotclasses.snapshot.storage.k8s.io configured
+----
+
+. Apply snapshot.storage.k8s.io_volumesnapshotcontents.yaml:
++
+----
+kubectl apply -f trident/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+----
++
+Response:
++
+----
+customresourcedefinition.apiextensions.k8s.io/volumesnapshotcontents.snapshot.storage.k8s.io configured
+----
+
+. Apply snapshot.storage.k8s.io_volumesnapshots.yaml:
++
+----
+kubectl apply -f trident/snapshot.storage.k8s.io_volumesnapshots.yaml
+----
++
+Response:
++
+----
+customresourcedefinition.apiextensions.k8s.io/volumesnapshots.snapshot.storage.k8s.io configured
+----
+
+. Apply setup-snapshot-controller.yaml:
++
+----
+kubectl apply -f trident/setup-snapshot-controller.yaml
+----
++
+Response:
++
+----
+deployment.apps/snapshot-controller configured
+----
+
+. Apply rbac-snapshot-controller.yaml:
++
+----
+kubectl apply -f trident/rbac-snapshot-controller.yaml
+----
++
+Response:
++
+----
+serviceaccount/snapshot-controller configured
+clusterrole.rbac.authorization.k8s.io/snapshot-controller-runner configured
+clusterrolebinding.rbac.authorization.k8s.io/snapshot-controller-role configured
+role.rbac.authorization.k8s.io/snapshot-controller-leaderelection configured
+rolebinding.rbac.authorization.k8s.io/snapshot-controller-leaderelection configured
+----
+
+. Verify that the CRD YAML files are applied:
++
+----
+kubectl get crd | grep volumesnapshot
+----
++
+Sample response:
++
+----
+astradsvolumesnapshots.astrads.netapp.io              2021-08-04T17:48:21Z
+volumesnapshotclasses.snapshot.storage.k8s.io         2021-08-04T22:05:49Z
+volumesnapshotcontents.snapshot.storage.k8s.io        2021-08-04T22:05:59Z
+volumesnapshots.snapshot.storage.k8s.io               2021-08-04T22:06:17Z
+----
+
+. Verify that the snapshot controller files are applied:
++
+----
+kubectl get pods -n kube-system | grep snapshot
+----
++
+Sample response:
++
+----
+snapshot-controller-7f58886ff4-cdh78                                    1/1     Running   0          13s
+snapshot-controller-7f58886ff4-tmrd9                                    1/1     Running   0          32s
+----
+
+== Set up Astra Data Store as storage backend
+
+Configure storage backend parameters in the ads_backend.json file and create the Astra Data Store storage backend.
+
+.Steps
+. Create `ads_backend.json` using a secure terminal:
++
+----
+vi ads_backend.json
+----
+
+. Configure the JSON file:
+.. Change the `"cluster"` value to the cluster name for the Astra Data Store cluster.
+.. Change the `"namespace"` value to the namespace you want to use with volume creation.
+.. Change the `"autoExportPolicy"` value to `true` unless you set up an exportpolicy CR instead for this backend.
+.. Populate the `"autoExportCIDRs"` list with IP addresses you want to grant access. Use `0.0.0.0/0` to allow all.
+.. For the `"kubeconfig"` value, do the following:
+... Convert and minimize the .kube/config YAML file to JSON format without spaces:
++
+Example conversion:
++
+----
+python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=None)' < ~/.kube/config > kubeconf.json
+----
+
+... Encode as base64 and use the base64 output for the `"kubeconfig"` value:
++
+Example encoding:
++
+----
+cat kubeconf.json | base64 | tr -d '\n'
+----
+
++
+[subs=+quotes]
+----
+{
+    "version": 1,
+    "storageDriverName": "astrads-nas",
+    "storagePrefix": "",
+    *"cluster": "example-1234584",*
+    *"namespace": "astrads-system",*
+    *"autoExportPolicy": true,*
+    *"autoExportCIDRs": ["0.0.0.0/0"],*
+    *"kubeconfig": "<base64_output_of_kubeconf_json>",*
+    "debugTraceFlags": {"method": true, "api": true},
+    "labels": {"cloud": "on-prem", "creator": "trident-dev"},
+    "defaults": {
+        "qosPolicy": "bronze"
+    },
+    "storage": [
+        {
+            "labels": {
+                "performance": "extreme"
+            },
+            "defaults": {
+                "qosPolicy": "bronze"
+            }
+        },
+        {
+            "labels": {
+                "performance": "premium"
+            },
+            "defaults": {
+                "qosPolicy": "bronze"
+            }
+        },
+        {
+            "labels": {
+                "performance": "standard"
+            },
+            "defaults": {
+                "qosPolicy": "bronze"
+            }
+        }
+    ]
+}
+----
+
+. Change to the directory where you downloaded the Trident installer:
++
+----
+cd <trident-installer or path to folder containing tridentctl>
+----
+
+. Create the storage backend:
++
+----
+./tridentctl create backend -f ads_backend.json -n trident
+----
++
+Sample response:
++
+----
++------------------+----------------+--------------------------------------+--------+---------+
+|       NAME       | STORAGE DRIVER |                 UUID                 | STATE  | VOLUMES |
++------------------+----------------+--------------------------------------+--------+---------+
+| example-1234584  | astrads-nas    | 2125fa7a-730e-43c8-873b-6012fcc3b527 | online |       0 |
++------------------+----------------+--------------------------------------+--------+---------+
+----
+
+== Create a default Astra Data Store storage class
+
+Create the Astra Trident default storage class and apply it to the storage backend.
+
+.Steps
+. Create the trident-csi storage class:
+.. Create ads_sc_example.yaml:
++
+----
+vi ads_sc_example.yaml
+----
++
+Example:
++
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: trident-csi
+provisioner: csi.trident.netapp.io
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - vers=4.1
+----
+
+.. Create trident-csi:
++
+----
+kubectl create -f ads_sc_example.yaml
+----
++
+Response:
++
+----
+storageclass.storage.k8s.io/trident-csi created
+----
+
+. Verify that the storage class has been added:
++
+----
+kubectl get storageclass -A
+----
++
+Response:
++
+----
+NAME          PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+trident-csi   csi.trident.netapp.io   Delete          Immediate           true                   6h29m
+----
+
+. Change to the directory where you downloaded the Trident installer:
++
+----
+cd <trident-installer or path to folder containing tridentctl>
+----
+
+. Verify that the Astra Trident backend has been updated with the default storage class parameters:
++
+----
+./tridentctl get backend -n trident -o yaml
+----
++
+Sample response:
++
+[subs=+quotes]
+----
+items:
+- backendUUID: 2125fa7a-730e-43c8-873b-6012fcc3b527
+  config:
+    autoExportCIDRs:
+    - 0.0.0.0/0
+    autoExportPolicy: true
+    backendName: ""
+    cluster: example-1234584
+    credentials: null
+    debug: false
+    debugTraceFlags:
+      api: true
+      method: true
+    defaults:
+      exportPolicy: default
+      qosPolicy: bronze
+      size: 1G
+      snapshotDir: "false"
+      snapshotPolicy: none
+    disableDelete: false
+    kubeconfig: <ID>
+    labels:
+      cloud: on-prem
+      creator: trident-dev
+    limitVolumeSize: ""
+    namespace: astrads-system
+    nfsMountOptions: ""
+    region: ""
+    serialNumbers: null
+    storage:
+    - defaults:
+        exportPolicy: ""
+        qosPolicy: bronze
+        size: ""
+        snapshotDir: ""
+        snapshotPolicy: ""
+      labels:
+        performance: extreme
+      region: ""
+      supportedTopologies: null
+      zone: ""
+    - defaults:
+        exportPolicy: ""
+        qosPolicy: bronze
+        size: ""
+        snapshotDir: ""
+        snapshotPolicy: ""
+      labels:
+        performance: premium
+      region: ""
+      supportedTopologies: null
+      zone: ""
+    - defaults:
+        exportPolicy: ""
+        qosPolicy: bronze
+        size: ""
+        snapshotDir: ""
+        snapshotPolicy: ""
+      labels:
+        performance: standard
+      region: ""
+      supportedTopologies: null
+      zone: ""
+    storageDriverName: astrads-nas
+    storagePrefix: ""
+    supportedTopologies: null
+    version: 1
+    zone: ""
+  configRef: ""
+  name: example-1234584
+  online: true
+  protocol: file
+  state: online
+  storage:
+    example-1234584_pool_0:
+      name: example-1234584_pool_0
+      storageAttributes:
+        backendType:
+          offer:
+          - astrads-nas
+        clones:
+          offer: true
+        encryption:
+          offer: false
+        labels:
+          offer:
+            cloud: on-prem
+            creator: trident-dev
+            performance: extreme
+        snapshots:
+          offer: true
+      storageClasses:
+      - trident-csi
+      supportedTopologies: null
+    example-1234584_pool_1:
+      name: example-1234584_pool_1
+      storageAttributes:
+        backendType:
+          offer:
+          - astrads-nas
+        clones:
+          offer: true
+        encryption:
+          offer: false
+        labels:
+          offer:
+            cloud: on-prem
+            creator: trident-dev
+            performance: premium
+        snapshots:
+          offer: true
+      storageClasses:
+      - trident-csi
+      supportedTopologies: null
+    example-1234584_pool_2:
+      name: example-1234584_pool_2
+      storageAttributes:
+        backendType:
+          offer:
+          - astrads-nas
+        clones:
+          offer: true
+        encryption:
+          offer: false
+        labels:
+          offer:
+            cloud: on-prem
+            creator: trident-dev
+            performance: standard
+        snapshots:
+          offer: true
+      storageClasses:
+      *- trident-csi*
+      supportedTopologies: null
+  volumes: []
+----
