@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Automatic support monitoring</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Automatic support monitoring" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/astra-data-store-2112/support/autosupport.html" />
+	<meta property="og:description" content="NetApp provides support for Astra Data Store preview in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB)..." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/astra-data-store-2112/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="NetApp provides support for Astra Data Store preview in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB)...">
+  <meta name="keywords" content=" how to use autosupport, autosupport, asup, logs, asup bundle, support ticket, support bundle"><!-- Icons -->
+  <link rel="icon" href="/us-en/astra-data-store-2112/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/astra-data-store-2112/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/astra-data-store-2112/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/astra-data-store-2112/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/astra-data-store-2112/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/astra-data-store-2112/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/astra-data-store-2112/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/astra-data-store-2112/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/astra-data-store-2112/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/astra-data-store-2112/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/astra-data-store-2112/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/us-en/astra-data-store-2112/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/astra-data-store-2112/js/na-search.js'></script><script src='/us-en/astra-data-store-2112/js/na-pagenav.js'></script><link rel='stylesheet' href='/us-en/astra-data-store-2112/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/astra-data-store-2112/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/astra-data-store-2112/js/na-utility.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/clouddocs.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/astra-data-store-2112/js/toc.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/us-en/astra-data-store-2112/js/custom-dropdown.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/FileSaver.min.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/jszip-utils.min.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/jszip.min.js'></script>
+  <script src='/us-en/astra-data-store-2112/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/issues/new?body=Page%3A%20[Automatic support monitoring](https://docs.netapp.com/us-en/astra-data-store-2112/support/autosupport.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/blob/main/support/autosupport.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/astra-data-store-2112/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/us-en/astra-data-store-2112/search.html"
+          data-type="widget" 
+          data-placeholder="Search Documentation" 
+          data-no-results-found="No results were found for {query}" 
+          data-did-you-mean="Search for {suggestion}." 
+          data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" 
+          data-results-found="{hitCount} results found"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>Available PDFs<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/us-en/astra-data-store-2112/pdfs/fullsite-sidebar/Astra_Data_Store_preview_documentation.pdf" >
+          <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/astra-data-store-2112/pdfs/sidebar/Release_notes.pdf" 
+            
+          >
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            Release notes
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/astra-data-store-2112/pdfs/sidebar/Concepts.pdf" 
+            
+          >
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            Concepts
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/astra-data-store-2112/pdfs/sidebar/Get_started.pdf" 
+            
+          >
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            Get started
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/astra-data-store-2112/pdfs/sidebar/Use_Astra_Data_Store.pdf" 
+            
+          >
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            Use Astra Data Store
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/astra-data-store-2112/pdfs/sidebar/Knowledge_and_support.pdf" 
+            
+          >
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            Knowledge and support
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/us-en/astra-data-store-2112/pdfs/pages/support/autosupport.pdf" >
+    <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/us-en/astra-data-store-2112/images/pdf-zip.png" width="16" height="16"/>
+      <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/index.html">
+        Astra Data Store 21.12 docs
+      </a></li><li class="subfolders "><a href="/us-en/astra-data-store-2112/release-notes/rn_overview.html">
+        <div class="na-navbar-padding"> Release notes</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/release-notes/whats-new.html">
+        What's new in this release of Astra Data Store
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/release-notes/known-issues.html">
+        Known issues
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/release-notes/known-limitations.html">
+        Known limitations
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Concepts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/concepts/intro.html">
+        Intro to Astra Data Store
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/concepts/architecture.html">
+        Deployment models
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/concepts/expansion.html">
+        Cluster expansion
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/concepts/storage-efficiency.html">
+        Storage efficiency
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/concepts/security.html">
+        Security
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Get started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/requirements.html">
+        Astra Data Store preview requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/quick-start.html">
+        Quick start for Astra Data Store preview
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/install-ads.html">
+        Install Astra Data Store preview
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/setup-ads.html">
+        Set up Astra Data Store preview components
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/capabilities.html">
+        Astra Data Store preview limits
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/get-started/faq-ads.html">
+        FAQ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Use Astra Data Store</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/kubectl-commands-ads.html">
+        Manage Astra Data Store assets
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/deploy-apps.html">
+        Deploy a test application
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/maintain-cluster.html">
+        Manage the cluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/monitor-with-cloud-insights.html">
+        Monitor metrics with Cloud Insights
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/monitor-with-prometheus-grafana.html">
+        Monitor metrics with Prometheus and Grafana
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/configure-endpoints.html">
+        Configure and monitor event logs
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/ads-acc-ui.html">
+        Astra Control Center integration
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/uninstall-ads.html">
+        Uninstall Astra Data Store preview automatically with a script
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/use/uninstall-ads-manual.html">
+        Uninstall Astra Data Store preview manually without a script
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Knowledge and support</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/support/troubleshooting-ads.html">
+        Troubleshooting
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/support/get-help-ads.html">
+        Get help
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/support/autosupport.html">
+        Automatic support monitoring
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/legal-notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/astra-family/">Astra</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/astra-data-store-2112/">Astra&nbsp;Data&nbsp;Store</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Automatic support monitoring</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-05-31 15:01:00 +0000">05/31/2022</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-mwallis">
+    <img  class="avatar avatar-small"
+          alt="netapp-mwallis"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/53353653?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>AutoSupport monitors the Astra Data Store preview system run-time and information and sends messages to NetApp Support. These system components can be monitored, depending on your configuration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Control plane</p>
+</li>
+<li>
+<p>Storage</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>AutoSupport is enabled by default during <a href="../get-started/install-ads.html#install-the-astra-data-store-cluster">Astra Data Store preview cluster installation</a> or after an AutoSupport custom resource (CR) is applied to the cluster. Once enabled, AutoSupport (ASUP) bundles are automatically uploaded to the <a href="https://mysupport.netapp.com/site/" target="_blank" rel="noopener">NetApp Support Site (NSS)</a> or made available for manual downloads.</p>
+</div>
+<div class="ulist">
+<div class="title">Options</div>
+<ul>
+<li>
+<p><a href="#autosupport-triggers-and-scenarios">AutoSupport triggers and scenarios</a></p>
+</li>
+<li>
+<p><a href="#configure-custom-control-plane-autosupport-collection">Configure custom control plane AutoSupport collection</a></p>
+</li>
+<li>
+<p><a href="#configure-custom-storage-autosupport-collection">Configure custom storage AutoSupport collection</a></p>
+</li>
+<li>
+<p><a href="#list-asups-in-the-system">List ASUPs in the system</a></p>
+</li>
+<li>
+<p><a href="#download-an-asup-bundle">Download an ASUP Bundle</a></p>
+</li>
+<li>
+<p><a href="#upload-a-core-file">Upload a core file</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="autosupport-triggers-and-scenarios">AutoSupport triggers and scenarios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AutoSupport bundles are triggered in the following ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Periodically</strong>: ASUP Bundles are created at intervals defined in a CR.</p>
+</li>
+<li>
+<p><strong>User Triggered</strong>: You can manually create your own ASUPs to look at the log.</p>
+</li>
+<li>
+<p><strong>Coredumps</strong>: If there are core dumps on a node, an ASUP is generated, and the core is sent to NetApp for further investigation.</p>
+</li>
+<li>
+<p><strong>Callhome event based</strong>: An ASUP is generated from a particular callhome event from the operating system.</p>
+</li>
+<li>
+<p><strong>Kubernetes event based</strong>: An ASUP is generated from a particular kubernetes event in the control plane.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These trigger scenarios generate one of these Autosupport types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ControlPlane AutoSupport</strong>: A collection of Astra Data Store preview control plane logs and CRs.</p>
+</li>
+<li>
+<p><strong>Storage AutoSupport</strong>: A collection of storage reports and performance data.</p>
+</li>
+<li>
+<p><strong>Core Dump AutoSupport</strong>: A collection of system core dumps.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configure-custom-control-plane-autosupport-collection">Configure custom control plane AutoSupport collection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create a custom AutoSupport collection configuration that reports on control plane events. Most installations already enable periodic event reporting by default during <a href="../get-started/install-ads.html#install-the-astra-data-store-cluster">Astra Data Store preview cluster installation</a>. This procedure describes how to configure an AutoSupport CR that reports based on parameters you select:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Customize the following command to create a control plane collection CR:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astasds asup collect -c controlplane --namespace=astrads-system</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Define custom parameters:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;myASUPname&gt;</code>: The name of the AutoSupport CR to be generated.</p>
+</li>
+<li>
+<p><code>-e &lt;event name&gt;</code>: The event name that triggers collection. The event name should be predefined in component.yaml (which is mounted to support controllers).</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrasds asup collect -c controlplane custom-asup-name -e debug --namespace=astrads-system</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add additional parameters as needed for your system:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>--cluster</code>: This flag is required in a multi-cluster environment.</p>
+</li>
+<li>
+<p><code>--localCollection</code>: Enables local collection. The default is <code>false</code>.</p>
+</li>
+<li>
+<p><code>--forceUpload</code>: Enables force upload. The default is <code>false</code>.</p>
+</li>
+<li>
+<p><code>--retry</code>: Enables retry. The default is <code>false</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configure-custom-storage-autosupport-collection">Configure custom storage AutoSupport collection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create a custom AutoSupport collection configuration that reports on storage component events. Most installations already enable periodic event reporting by default during <a href="../get-started/install-ads.html#install-the-astra-data-store-cluster">Astra Data Store preview cluster installation</a>. This procedure describes how to configure an AutoSupport CR that reports based on parameters you select:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Customize the following command to create a storage collection CR:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrasds asup collect -c storage --namespace=astrads-system</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Define custom parameters:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;myASUPname&gt;</code>: The name of the AutoSupport CR to be generated.</p>
+</li>
+<li>
+<p><code>-e &lt;event name&gt;</code>: The event name that triggers collection. The event name should be predefined in component.yaml (which is mounted to support controllers).</p>
+<div class="paragraph">
+<p>Example with performance event:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl-astrads asup collect -c storage -e performance example-perf-storage-asup</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>-t &lt;ISO_format&gt; -d &lt;hours&gt;</code>: Collect a storage ASUP for all nodes for a specified duration. Use standard ISO date time format (<code>-t</code>) with a duration (<code>d</code>) in hours. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrads asup collect -c storage -t 2021-01-01T15:00:00Z -d 24</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>--nodes &lt;nodename&gt;</code>: Collect a storage ASUP for specified node. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrads asup collect -c storage --nodes example1</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>--nodes nodename1,nodename2,nodename3</code>: Collect a storage ASUP for specified nodes:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrads asup collect -c storage --nodes example1,example2,example3</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add additional parameters as needed for your system:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>--cluster</code>: This flag is required in a multi-cluster environment.</p>
+</li>
+<li>
+<p><code>--localCollection</code>: Enables local collection. The default is <code>false</code>.</p>
+</li>
+<li>
+<p><code>--forceUpload</code>: Enables force upload. The default is <code>false</code>.</p>
+</li>
+<li>
+<p><code>--retry</code>: Enables retry. The default is <code>false</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="list-asups-in-the-system">List ASUPs in the system</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the following command to list ASUPs in the system by name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrasds asup list --namespace=astrads-system</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sample response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAMESPACE      NAME                                  SEQUENCE NUMBER EVENT                      SIZE  STATE       LOCAL COLLECTION
+astrads-system  storage-callhome.reboot.unknown-...  1               callhome.reboot.unknown    0     uploaded    astrads-ds-support-tdl2h:
+astrads-system  storage-callhome.reboot.unknown-...  2               callhome.reboot.unknown    0     uploaded    astrads-ds-support-xx6n8:
+astrads-system  storage-callhome.reboot.unknown-...  3               callhome.reboot.unknown    0     uploaded    astrads-ds-support-qghnx:</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="download-an-asup-bundle">Download an ASUP Bundle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can download locally-collected ASUP bundles using this command. Use <code>-o &lt;location&gt;</code> to specify a location other than the current working directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./kubectl-astrasds asup download &lt;ASUP_bundle_name&gt; -o &lt;location&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upload-a-core-file">Upload a core file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If a service crashes, an AutoSupport (ASUP) message is created along with a file containing relevant memory contents at the time of the crash (known as a core file). Astra Data Store preview automatically uploads the ASUP message to NetApp Support, but you need to manually upload the core file so that it is associated with the ASUP message.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Use the following <code>kubectl</code> commands to view the ASUP message:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrasds asup list --namespace=astrads-system</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see output similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAMESPACE       NAME                      SEQUENCE NUMBER  EVENT     SIZE       STATE       LOCAL COLLECTION
+
+astrads-system  storage-coredump-2021...  1                coredump  197848373  compressed  astrads-ds-support-sxxn7:/var/...</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use the following <code>kubectl</code> commands to download the core file from the ASUP message. Use the <code>-o</code> option to specify a destination directory for the downloaded file.</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl astrads asup download storage-coredump-20211216t140851311961680 -o &lt;absolute_path_to_destination_directory&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-data-store-2112/images/note.svg" alt="Note">
+</td>
+<td class="content">
+In rare cases, you might not be able to download the core file because other core files have taken its place. When this happens, the command returns the error <code>Cannot stat: No such file or directory</code>. If you see this error, you can <a href="get-help-ads.html">get help</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Open a web browser and browse to the <a href="https://upload.netapp.com/sg" target="_blank" rel="noopener">NetApp Authenticated File Upload tool</a>, entering your NetApp Support credentials if you are not already logged in.</p>
+</li>
+<li>
+<p>Select the <strong>I don&#8217;t have a case number</strong> check box.</p>
+</li>
+<li>
+<p>In the <strong>Closest Region</strong> menu, select the closest region to you.</p>
+</li>
+<li>
+<p>Select the <strong>Upload</strong> button.</p>
+</li>
+<li>
+<p>Browse to and select the core file you downloaded earlier.</p>
+<div class="paragraph">
+<p>The upload begins. When the upload is finished, a success message appears.</p>
+</div>
+</li>
+</ol>
+</div>
+<h2 id="find-more-information" class="discrete">Find more information</h2>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp" target="_blank" rel="noopener">How to upload a file to NetApp (login required)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of Use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">Have feedback for our website?</span>
+              <a target="_self" href="javascript:netapp_mailto()">Let us know</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/us-en/announcements/">Announcements</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/astra-data-store-2112/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/astra-data-store-2112/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/astra-data-store-2112/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/astra-data-store-2112/js/www-ntap.js'></script>
+    <script src='/us-en/astra-data-store-2112/js/tabbed-blocks.js'></script>
+  </body></html>
