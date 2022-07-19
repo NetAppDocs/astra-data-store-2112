@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/issues/new?body=Page%3A%20[What&#8217;s new in this release of Astra Data Store](https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/whats-new.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/blob/main/release-notes/whats-new.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/astra-data-store-2112/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/issues/new?body=Page%3A%20[What&#8217;s new in this release of Astra Data Store](https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/whats-new.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/discuss-sm.svg" alt="" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/astra-data-store-2112/blob/main/release-notes/whats-new.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/astra-data-store-2112/images/edit-sm.svg" alt="" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/astra-data-store-2112/images/article-sm.svg" alt="" class="github-icon" />Learn how to contribute</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">ON THIS PAGE</div>
@@ -258,11 +258,13 @@
           <div id="react-search" 
           data-search-html="/us-en/astra-data-store-2112/search.html"
           data-type="widget" 
-          data-placeholder="Search Documentation" 
-          data-no-results-found="No results were found for {query}" 
-          data-did-you-mean="Search for {suggestion}." 
-          data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" 
-          data-results-found="{hitCount} results found"  
+          data-placeholder="Search Documentation"
+          data-no-results-found="No results were found for {query}"
+          data-did-you-mean="Search for {suggestion}."
+          data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?"
+          data-results-found="{hitCount} results found"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
           data-sk-es-pf-indexes=""
           data-flavor=""></div>
           <button class="n-property-bar__search-toggle-button" type="button">
@@ -277,35 +279,27 @@
     </div>
   </div>
   <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">English</span>
-        <button class="ie-i18n-icon-container" type="button">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">English</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/astra-data-store-2112/common/svg/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
-        <div class="n-language-selector-menu">
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/astra-data-store-2112/release-notes/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/astra-data-store-2112/release-notes/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/astra-data-store-2112/release-notes/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/astra-data-store-2112/release-notes/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
-                </li></ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/whats-new.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/astra-data-store-2112/release-notes/whats-new.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/astra-data-store-2112/release-notes/whats-new.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/astra-data-store-2112/release-notes/whats-new.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/astra-data-store-2112/release-notes/whats-new.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
     </div><!-- End Language Selector -->
 
     <div class="n-property-bar__cta"></div>
@@ -349,7 +343,7 @@
   <div class="col-md-3" id="sidebar-height">
       <div class="n-pdf-header">
   <a id="toggleButtonPdf" class="n-pdf-button" type="button">
-    <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>Available PDFs<span>
+    <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>Available PDFs<span>
     </span>
   </a>
 </div>
@@ -359,7 +353,7 @@
         
         
         <a target="_blank" href="/us-en/astra-data-store-2112/pdfs/fullsite-sidebar/Astra_Data_Store_preview_21_12_documentation.pdf" >
-          <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
+          <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>PDF of this doc site</a>
 
 
 
@@ -374,18 +368,11 @@
               href="/us-en/astra-data-store-2112/pdfs/sidebar/Release_notes.pdf" 
             
           >
-            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>
             Release notes
           </a>
           
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/us-en/astra-data-store-2112/pdfs/pages/release-notes/whats-new.pdf" >
-    <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
   
 
 
@@ -393,8 +380,6 @@
 
 
 
-
-          
         </li>
       </ul>
     
@@ -414,7 +399,7 @@
               href="/us-en/astra-data-store-2112/pdfs/sidebar/Concepts.pdf" 
             
           >
-            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>
             Concepts
           </a>
           
@@ -428,8 +413,6 @@
 
 
 
-
-          
         </li>
       </ul>
     
@@ -449,7 +432,7 @@
               href="/us-en/astra-data-store-2112/pdfs/sidebar/Get_started.pdf" 
             
           >
-            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>
             Get started
           </a>
           
@@ -465,8 +448,6 @@
 
 
 
-
-          
         </li>
       </ul>
     
@@ -486,7 +467,7 @@
               href="/us-en/astra-data-store-2112/pdfs/sidebar/Use_Astra_Data_Store.pdf" 
             
           >
-            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>
             Use Astra Data Store
           </a>
           
@@ -508,8 +489,6 @@
 
 
 
-
-          
         </li>
       </ul>
     
@@ -529,7 +508,7 @@
               href="/us-en/astra-data-store-2112/pdfs/sidebar/Knowledge_and_support.pdf" 
             
           >
-            <img src="/us-en/astra-data-store-2112/images/pdf.png" width="16" height="16"/>
+            <img src="/us-en/astra-data-store-2112/images/pdf.png" alt="" width="16" height="16"/>
             Knowledge and support
           </a>
           
@@ -539,8 +518,6 @@
 
 
 
-
-          
         </li>
       </ul>
     
@@ -549,11 +526,10 @@
 
 
 
-
 </li></ul>
   <div class="zip-pdf-link-container" style="display: none;">   
     <a href="#" id="zipPdf">
-      <img src="/us-en/astra-data-store-2112/images/pdf-zip.png" width="16" height="16"/>
+      <img src="/us-en/astra-data-store-2112/images/pdf-zip.png" alt="" width="16" height="16"/>
       <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
     </a><div id="zip-link-popup" class="hide">
     <div class="inner-modal">
@@ -586,7 +562,7 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container">
+</script><div class="sidebar-nav-container" id="mysidebardiv">
   <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/astra-data-store-2112/index.html">
         Astra Data Store 21.12 docs
       </a></li><li class="subfolders "><a href="/us-en/astra-data-store-2112/release-notes/rn_overview.html">
@@ -955,4 +931,5 @@
     </script>
     <script src='/us-en/astra-data-store-2112/js/www-ntap.js'></script>
     <script src='/us-en/astra-data-store-2112/js/tabbed-blocks.js'></script>
+    <script src='/us-en/astra-data-store-2112/js/sidebar.js'></script>
   </body></html>
